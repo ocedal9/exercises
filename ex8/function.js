@@ -1,19 +1,15 @@
-function flatten(obj, parentName, newObj = {}) {
-  const entries = Object.entries(obj)
-  entries.reduce((acu, pair) => {
-    let keyString = parentName.concat('_', pair[0])
-    if (
-      typeof pair[1] === 'object' &&
-      pair[1] != null &&
-      !Array.isArray(pair[1])
-    ) {
-      flatten(pair[1], keyString, newObj)
-    } else {
-      newObj[keyString] = pair[1]
-    }
-    return newObj
-  }, 0)
-  return newObj
+const isObject = (obj, key) => obj?.[key]?.constructor === Object
+
+const val = (obj, key, namespace) =>
+  isObject(obj, key) ? flatten(obj[key], namespace) : { [namespace]: obj[key] }
+
+const reducer = (obj, namespace, acc, prop) => {
+  return { ...acc, ...val(obj, prop, `${namespace}_${prop}`) }
+}
+
+const flatten = (obj, namespace) => {
+  const result = Object.keys(obj).reduce(reducer.bind(null, obj, namespace), {})
+  return { ...result }
 }
 
 function flattenImp(oldObject, parentName) {

@@ -1,0 +1,27 @@
+{
+  "name": "exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "function": "nodemon ex8/function.js",
+    "other": "nodemon other.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocedal9/excercises.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ocedal9/excercises/issues"
+  },
+  "homepage": "https://github.com/ocedal9/excercises#readme",
+  "dependencies": {
+    "jest": "^26.4.2",
+    "node-fetch": "^2.6.1",
+    "word-list": "^3.1.0"
+  }
+}

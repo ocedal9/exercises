@@ -1,3 +1,4 @@
+
 const isObject = (obj, key) => obj?.[key]?.constructor === Object
 
 const val = (obj, key, namespace) =>

@@ -11,16 +11,12 @@ function flattenRecursive(input) {
 }
 
 function flattenIterative(input) {
-  var array = []
-  while (input.length) {
-    var value = input.shift()
-    if (Array.isArray(value)) {
-      input = value.concat(input)
-    } else {
-      array.push(value)
+  for (var i = 0; i < input.length; i++)
+    if (Array.isArray(input[i])) {
+      input.splice(i, 1, ...input[i])
+      i--
     }
-  }
-  return array
+  return input
 }
 
 module.exports = { flattenRecursive, flattenIterative }

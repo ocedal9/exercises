@@ -177,3 +177,13 @@ describe('Error', () => {
     expect(result).toThrowError('inside')
   })
 })
+
+describe('Error', () => {
+  test('Syntax Error', () => {
+    const tree = '(R,(t),,,,)'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})

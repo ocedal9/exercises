@@ -22,7 +22,9 @@ class Tree {
       let closePar = 0
       let openPar = 0
       let data = ''
-      if (exp) {
+      if (!exp && !expArr[i + 1]) {
+        throw new Error('Wrong Syntax')
+      } else if (exp) {
         for (let p = 0; p < exp.length; p++) {
           let char = exp[p]
           let regex = /[a-z0-9]/i

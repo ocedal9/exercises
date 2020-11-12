@@ -21,6 +21,7 @@ class Tree {
       let exp = expArr[i]
       let closePar = 0
       let openPar = 0
+      let charNum = 0
       let data = ''
       if (!exp && !expArr[i + 1]) {
         throw new Error('Wrong Syntax')
@@ -45,6 +46,12 @@ class Tree {
         }
         if (openPar == 1 && openPar + closePar == exp.length) {
           throw new Error('")" is not a valid data input')
+        } else if (
+          closePar == 1 &&
+          openPar == 1 &&
+          expArr[i - 1].endsWith(')')
+        ) {
+          throw new Error('Two right sons not allowd')
         }
         let node = {}
         if (i === 0) {

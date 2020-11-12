@@ -187,3 +187,13 @@ describe('Error', () => {
     expect(result).toThrowError('Wrong')
   })
 })
+
+describe('Error', () => {
+  test('Two right sons Error', () => {
+    const tree = '(R,(t),(r),)'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Two')
+  })
+})

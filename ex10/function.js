@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class tree {
+class Tree {
   constructor() {
     this.root
   }
@@ -44,14 +44,29 @@ class tree {
             currStack.left = node
           }
           stack.push(node)
-        } else if (closePar === 1) {
-          node = new Node(data)
-          currStack.left = node
-        } else if (closePar >= 2) {
-          let pop = closePar / 2
-          node = new Node(data)
-          currStack.right = node
+        } else if (closePar === exp.length && exp.length % 2 == 1) {
+          let pop = (closePar + 1) / 2
           for (pop; pop > 0; pop--) {
+            stack.pop()
+          }
+        } else if (closePar === 1) {
+          if (closePar === exp.length) {
+            stack.pop()
+          } else {
+            node = new Node(data)
+            currStack.left = node
+          }
+        } else if (closePar >= 2) {
+          if (expArr[i - 1].endsWith(')') || expArr[i - 1].length == 0) {
+            let pop = closePar / 2
+            node = new Node(data)
+            currStack.right = node
+            for (pop; pop > 0; pop--) {
+              stack.pop()
+            }
+          } else {
+            node = new Node(data)
+            currStack.left = node
             stack.pop()
           }
         }
@@ -91,13 +106,23 @@ class tree {
 }
 
 function printTree(tree, order = 'infix') {
+  const myTree = new Tree()
+  myTree.add(tree)
   if (order == 'infix') {
-    return tree.infix()
+    return myTree.infix()
   } else if (order == 'prefix') {
-    return tree.prefix()
+    return myTree.prefix()
   } else if (order == 'postfix') {
-    return tree.postfix()
+    return myTree.postfix()
   }
 }
 
-module.exports = { printTree, tree }
+module.exports = { printTree }
+
+// const btree = '(A,(B,,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+
+// // const tree3 = new Tree()
+// const tree1 = new Tree()
+// tree1.add(btree)
+// // console.log(tree1)
+// console.log(tree1.infix())

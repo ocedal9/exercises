@@ -1,34 +1,29 @@
-const { TestScheduler } = require('jest')
-const { printTree, tree } = require('./function')
+const { printTree, Tree } = require('./function')
 
-const bTree = '(A,(B,(D),(E)),(C,(F,(H),(I)),(G,,(J))))'
-const tree1 = new tree()
-tree1.add(bTree)
+const tree1 = '(A,(B,(D),(E)),(C,(F,(H),(I)),(G,,(J))))'
 
-describe('proposed tree', () => {
+describe('proposed Tree', () => {
   test('infix order', () => {
     const result = printTree(tree1)
     expect(result).toEqual(['D', 'B', 'E', 'A', 'H', 'F', 'I', 'C', 'G', 'J'])
   })
 })
 
-describe('proposed tree', () => {
+describe('proposed Tree', () => {
   test('prefix order', () => {
     const result = printTree(tree1, 'prefix')
     expect(result).toEqual(['A', 'B', 'D', 'E', 'C', 'F', 'H', 'I', 'G', 'J'])
   })
 })
 
-describe('proposed tree', () => {
+describe('proposed Tree', () => {
   test('postfix order', () => {
     const result = printTree(tree1, 'postfix')
     expect(result).toEqual(['D', 'E', 'B', 'H', 'I', 'F', 'J', 'G', 'C', 'A'])
   })
 })
 
-const bTree2 = '(Aaa,(b,(D5gr),(Eeee)),(098776,(F,(nnbn),(I)),(G44,,(J))))'
-const tree2 = new tree()
-tree2.add(bTree2)
+const tree2 = '(Aaa,(b,(D5gr),(Eeee)),(098776,(F,(nnbn),(I)),(G44,,(J))))'
 
 describe('different charactres', () => {
   test('infix order', () => {
@@ -84,71 +79,59 @@ describe('different charactres', () => {
   })
 })
 
-const bTree3 = '(A,(B,,(D)),(C,(E,(G,(K),(L,((M),(N)))),(H)),(F,(I),(J))))'
+const tree3 = '(A,(B,,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
 
-const tree3 = new tree()
-tree3.add(bTree3)
-
-describe('different tree', () => {
+describe('different Tree', () => {
   test('infix order', () => {
     const result = printTree(tree3)
     expect(result).toEqual([
       'B',
-      'D',
       'A',
-      'K',
-      'G',
-      'M',
-      'L',
-      'N',
-      'E',
-      'H',
-      'C',
       'I',
       'F',
+      'K',
       'J',
+      'D',
+      'G',
+      'C',
+      'H',
+      'E',
     ])
   })
 })
 
-describe('different tree', () => {
+describe('different Tree', () => {
   test('prefix order', () => {
     const result = printTree(tree3, 'prefix')
     expect(result).toEqual([
       'A',
       'B',
-      'D',
       'C',
-      'E',
-      'G',
-      'K',
-      'L',
-      'M',
-      'N',
-      'H',
+      'D',
       'F',
       'I',
       'J',
+      'K',
+      'G',
+      'E',
+      'H',
     ])
   })
 })
 
-describe('different tree', () => {
+describe('different Tree', () => {
   test('postfix order', () => {
     const result = printTree(tree3, 'postfix')
     expect(result).toEqual([
-      'D',
       'B',
-      'K',
-      'M',
-      'N',
-      'L',
-      'G',
-      'H',
-      'E',
       'I',
+      'K',
       'J',
       'F',
+      'G',
+      'D',
+      'H',
+      'E',
       'C',
       'A',
     ])

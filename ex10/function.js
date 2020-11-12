@@ -11,12 +11,16 @@ class Tree {
     this.root
   }
   add(str) {
+    if (str[0] !== '(' || !str.endsWith(')')) {
+      throw new Error('Wrong Input, must be inside ()')
+    }
     const expArr = str.split(',')
     const stack = []
     for (let i = 0; i < expArr.length; i++) {
       const currStack = stack[stack.length - 1]
       let exp = expArr[i]
       let closePar = 0
+      let openPar = 0
       let data = ''
       if (exp) {
         for (let p = 0; p < exp.length; p++) {
@@ -28,8 +32,17 @@ class Tree {
           } else if (char === ')') {
             closePar++
           } else if (!alpha && char != '(' && char != ')') {
-            throw Error('Wrong Input String')
+            const text = `Wrong Character '${char}', must be alphanumeric`
+            throw new Error(text)
+          } else if (char === '(') {
+            openPar++
+            if (openPar > 1) {
+              throw new Error('"(" is not a valid data input')
+            }
           }
+        }
+        if (openPar == 1 && openPar + closePar == exp.length) {
+          throw new Error('")" is not a valid data input')
         }
         let node = {}
         if (i === 0) {
@@ -118,11 +131,3 @@ function printTree(tree, order = 'infix') {
 }
 
 module.exports = { printTree }
-
-// const btree = '(A,(B,,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
-
-// // const tree3 = new Tree()
-// const tree1 = new Tree()
-// tree1.add(btree)
-// // console.log(tree1)
-// console.log(tree1.infix())

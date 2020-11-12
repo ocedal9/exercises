@@ -137,3 +137,43 @@ describe('different Tree', () => {
     ])
   })
 })
+
+describe('Error', () => {
+  test('"(" as data Error', () => {
+    const tree = '(A,(B,,),((,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError(new Error('"(" is not a valid data input'))
+  })
+})
+
+describe('Error', () => {
+  test('")" as data Error', () => {
+    const tree = '(A,(B,,),(),(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError(new Error('")" is not a valid data input'))
+  })
+})
+
+describe('Error', () => {
+  test('not alphanumeric as data Error', () => {
+    const tree = '(A,(B,,),(%,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Character')
+  })
+})
+
+describe('Error', () => {
+  test('input not inside () Error', () => {
+    const tree = 't'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('inside')
+  })
+})

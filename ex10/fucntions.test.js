@@ -1,4 +1,4 @@
-const { printTree, Tree } = require('./function')
+const { printTree } = require('./function')
 
 const tree1 = '(A,(B,(D),(E)),(C,(F,(H),(I)),(G,,(J))))'
 
@@ -195,5 +195,25 @@ describe('Error', () => {
       printTree(tree, 'postfix')
     }
     expect(result).toThrowError('Two')
+  })
+})
+
+describe('Error', () => {
+  test('Wrong Distribution', () => {
+    const tree = '(A,(B),,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('distribution')
+  })
+})
+
+describe('Error', () => {
+  test('Wrong root data', () => {
+    const tree = '(A),(B,,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('root')
   })
 })

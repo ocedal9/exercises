@@ -217,3 +217,13 @@ describe('Error', () => {
     expect(result).toThrowError('root')
   })
 })
+
+describe('Error', () => {
+  test('expression must start whith "(" or ""', () => {
+    const tree = '(a,b)'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Expression')
+  })
+})

@@ -32,6 +32,7 @@ class Tree {
     } else {
       for (let i = 0; i < expArr.length; i++) {
         let exp = expArr[i]
+        // console.log('exp', exp)
         if (i == 0 && expArr.length > 1 && exp.endsWith(')')) {
           throw new Error('Wrong root node syntax')
         } else if (i > 0 && stack.length == 0) {
@@ -48,7 +49,9 @@ class Tree {
           for (let p = 0; p < exp.length; p++) {
             let char = exp[p]
             if (p == 0) {
-              if (char == ')') {
+              if (char != '(' && char != ')') {
+                throw new Error('Expression should start with "("')
+              } else if (char == ')') {
                 closer = true
               }
             }

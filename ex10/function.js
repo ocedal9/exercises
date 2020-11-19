@@ -67,8 +67,6 @@ class Tree {
     } else if (expArr.length > 2) {
       nodeData = this.valData(expArr[0])
       let parAcu = 0
-      let leftArr = []
-      let rightArr = []
       for (let i = 1; i < expArr.length; i++) {
         parAcu += this.parCount(expArr[i])
         if (parAcu == 0) {
@@ -79,13 +77,13 @@ class Tree {
         throw new Error('Wrong Syntax')
       }
       if (leftEnd) {
-        leftArr = expArr.slice(1, leftEnd + 1)
+        let leftArr = expArr.slice(1, leftEnd + 1)
         leftData = leftArr.join(',')
-        rightArr = expArr.slice(leftEnd + 1)
+        let rightArr = expArr.slice(leftEnd + 1)
         let rightDataMom = rightArr.join(',')
         rightData = rightDataMom.slice(0, rightDataMom.length - 1)
       } else {
-        leftArr = expArr.slice(1, expArr.length)
+        let leftArr = expArr.slice(1, expArr.length)
         let leftDataMom = leftArr.join(',')
         leftData = leftDataMom.slice(0, leftDataMom.length - 1)
       }
@@ -104,7 +102,6 @@ class Tree {
       this.add(rightData, wnode.right)
     }
   }
-
   infix() {
     var result = new Array()
     const infixRecursion = function (node) {

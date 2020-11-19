@@ -369,3 +369,10 @@ describe('Valid Syntax', () => {
     expect(result).toEqual(['C', 'R', '0', 'T'])
   })
 })
+describe('Valid Syntax', () => {
+  test('(0,(R,(R,(R,(R,(R),(X))))))', () => {
+    const tree = '(0,(R,(R,(R,(R,(R),(X))))))'
+    const result = printTree(tree)
+    expect(result).toEqual(['R', 'R', 'X', 'R', 'R', 'R', '0'])
+  })
+})

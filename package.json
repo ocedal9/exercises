@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "function": "nodemon ex10/function.js",
-    "other": "nodemon other.js"
+    "other": "nodemon other.js",
+    "qqqqq": "nodemon qqqqq.js"
   },
   "repository": {
     "type": "git",

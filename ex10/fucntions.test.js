@@ -79,23 +79,24 @@ describe('different charactres', () => {
   })
 })
 
-const tree3 = '(A,(B,,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+const tree3 = '(A,(B,(D),(E,(H),(I))),(C,(F,(J),(K)),(G,,(L))))'
 
 describe('different Tree', () => {
   test('infix order', () => {
     const result = printTree(tree3)
     expect(result).toEqual([
-      'B',
-      'A',
-      'I',
-      'F',
-      'K',
-      'J',
       'D',
-      'G',
-      'C',
+      'B',
       'H',
       'E',
+      'I',
+      'A',
+      'J',
+      'F',
+      'K',
+      'C',
+      'G',
+      'L',
     ])
   })
 })
@@ -106,15 +107,16 @@ describe('different Tree', () => {
     expect(result).toEqual([
       'A',
       'B',
-      'C',
       'D',
-      'F',
+      'E',
+      'H',
       'I',
+      'C',
+      'F',
       'J',
       'K',
       'G',
-      'E',
-      'H',
+      'L',
     ])
   })
 })
@@ -123,15 +125,16 @@ describe('different Tree', () => {
   test('postfix order', () => {
     const result = printTree(tree3, 'postfix')
     expect(result).toEqual([
-      'B',
-      'I',
-      'K',
-      'J',
-      'F',
-      'G',
       'D',
       'H',
+      'I',
       'E',
+      'B',
+      'J',
+      'K',
+      'F',
+      'L',
+      'G',
       'C',
       'A',
     ])
@@ -144,7 +147,7 @@ describe('Error', () => {
     function result() {
       printTree(tree, 'postfix')
     }
-    expect(result).toThrowError(new Error('"(" is not a valid data input'))
+    expect(result).toThrowError('Wrong')
   })
 })
 
@@ -154,7 +157,7 @@ describe('Error', () => {
     function result() {
       printTree(tree, 'postfix')
     }
-    expect(result).toThrowError(new Error('")" is not a valid data input'))
+    expect(result).toThrowError('Wrong')
   })
 })
 
@@ -164,7 +167,7 @@ describe('Error', () => {
     function result() {
       printTree(tree, 'postfix')
     }
-    expect(result).toThrowError('Character')
+    expect(result).toThrowError('Wrong')
   })
 })
 
@@ -174,7 +177,7 @@ describe('Error', () => {
     function result() {
       printTree(tree, 'postfix')
     }
-    expect(result).toThrowError('inside')
+    expect(result).toThrowError('Wrong')
   })
 })
 
@@ -194,7 +197,7 @@ describe('Error', () => {
     function result() {
       printTree(tree, 'postfix')
     }
-    expect(result).toThrowError('Two')
+    expect(result).toThrowError('Wrong')
   })
 })
 
@@ -204,7 +207,7 @@ describe('Error', () => {
     function result() {
       printTree(tree, 'postfix')
     }
-    expect(result).toThrowError('distribution')
+    expect(result).toThrowError('Wrong')
   })
 })
 
@@ -214,7 +217,7 @@ describe('Error', () => {
     function result() {
       printTree(tree, 'postfix')
     }
-    expect(result).toThrowError('root')
+    expect(result).toThrowError('Wrong')
   })
 })
 
@@ -224,6 +227,6 @@ describe('Error', () => {
     function result() {
       printTree(tree, 'postfix')
     }
-    expect(result).toThrowError('Expression')
+    expect(result).toThrowError('Wrong')
   })
 })

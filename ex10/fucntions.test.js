@@ -142,37 +142,7 @@ describe('different Tree', () => {
 })
 
 describe('Error', () => {
-  test('"(" as data Error', () => {
-    const tree = '(A,(B,,),((,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
-    function result() {
-      printTree(tree, 'postfix')
-    }
-    expect(result).toThrowError('Wrong')
-  })
-})
-
-describe('Error', () => {
-  test('")" as data Error', () => {
-    const tree = '(A,(B,,),(),(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
-    function result() {
-      printTree(tree, 'postfix')
-    }
-    expect(result).toThrowError('Wrong')
-  })
-})
-
-describe('Error', () => {
-  test('not alphanumeric as data Error', () => {
-    const tree = '(A,(B,,),(%,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
-    function result() {
-      printTree(tree, 'postfix')
-    }
-    expect(result).toThrowError('Wrong')
-  })
-})
-
-describe('Error', () => {
-  test('input not inside () Error', () => {
+  test('t', () => {
     const tree = 't'
     function result() {
       printTree(tree, 'postfix')
@@ -182,7 +152,17 @@ describe('Error', () => {
 })
 
 describe('Error', () => {
-  test('Syntax Error', () => {
+  test('(a,(b)', () => {
+    const tree = '(a,(b)'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Error', () => {
+  test('(R,(t),,,,)', () => {
     const tree = '(R,(t),,,,)'
     function result() {
       printTree(tree, 'postfix')
@@ -192,7 +172,17 @@ describe('Error', () => {
 })
 
 describe('Error', () => {
-  test('Two right sons Error', () => {
+  test('(0,(R,(C))', () => {
+    const tree = '(0,(R,(C))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Error', () => {
+  test('(R,(t),(r),)', () => {
     const tree = '(R,(t),(r),)'
     function result() {
       printTree(tree, 'postfix')
@@ -202,27 +192,7 @@ describe('Error', () => {
 })
 
 describe('Error', () => {
-  test('Wrong Distribution', () => {
-    const tree = '(A,(B),,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
-    function result() {
-      printTree(tree, 'postfix')
-    }
-    expect(result).toThrowError('Wrong')
-  })
-})
-
-describe('Error', () => {
-  test('Wrong root data', () => {
-    const tree = '(A),(B,,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
-    function result() {
-      printTree(tree, 'postfix')
-    }
-    expect(result).toThrowError('Wrong')
-  })
-})
-
-describe('Error', () => {
-  test('expression must start whith "(" or ""', () => {
+  test('(a,b)', () => {
     const tree = '(a,b)'
     function result() {
       printTree(tree, 'postfix')
@@ -231,11 +201,151 @@ describe('Error', () => {
   })
 })
 describe('Error', () => {
-  test('no matching parentesis', () => {
+  test('(A,((B)),)', () => {
+    const tree = '(A,((B)),)'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Error', () => {
+  test('(0,(R,(C),),(T),)', () => {
+    const tree = '(0,(R,(C),),(T),)'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Error', () => {
+  test('(0,(R,(R,(R,(R,(R),(X))', () => {
     const tree = '(0,(R,(R,(R,(R,(R),(X))'
     function result() {
       printTree(tree, 'postfix')
     }
     expect(result).toThrowError('Wrong')
+  })
+})
+describe('Error', () => {
+  test('(A,(B,,),((,(D,(F,(I),(J,(K),))),(G)),(E,(H))))', () => {
+    const tree = '(A,(B,,),((,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Error', () => {
+  test('(A,(B,,),(),(D,(F,(I),(J,(K),))),(G)),(E,(H))))', () => {
+    const tree = '(A,(B,,),(),(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Error', () => {
+  test('(A,(B,,),(%,(D,(F,(I),(J,(K),))),(G)),(E,(H))))', () => {
+    const tree = '(A,(B,,),(%,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Error', () => {
+  test('(A),(B,,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))', () => {
+    const tree = '(A),(B,,),(C,(D,(F,(I),(J,(K),))),(G)),(E,(H))))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Valid Syntax', () => {
+  test('(A1)', () => {
+    const tree = '(A1)'
+    const result = printTree(tree)
+    expect(result).toEqual(['A1'])
+  })
+})
+
+describe('Valid Syntax', () => {
+  test('(AA,)', () => {
+    const tree = '(AA,)'
+    const result = printTree(tree)
+    expect(result).toEqual(['AA'])
+  })
+})
+
+describe('Valid Syntax', () => {
+  test('(A,(B))', () => {
+    const tree = '(A,(B))'
+    const result = printTree(tree)
+    expect(result).toEqual(['B', 'A'])
+  })
+})
+describe('Valid Syntax', () => {
+  test('(A,(B),)', () => {
+    const tree = '(A,(B),)'
+    const result = printTree(tree)
+    expect(result).toEqual(['B', 'A'])
+  })
+})
+describe('Valid Syntax', () => {
+  test('(A,,(C))', () => {
+    const tree = '(A,,(C))'
+    const result = printTree(tree)
+    expect(result).toEqual(['A', 'C'])
+  })
+})
+describe('Valid Syntax', () => {
+  test('(A,(B),(C))', () => {
+    const tree = '(A,(B),(C))'
+    const result = printTree(tree)
+    expect(result).toEqual(['B', 'A', 'C'])
+  })
+})
+describe('Valid Syntax', () => {
+  test('(0,(R,(C)))', () => {
+    const tree = '(0,(R,(C)))'
+    const result = printTree(tree)
+    expect(result).toEqual(['C', 'R', '0'])
+  })
+})
+describe('Valid Syntax', () => {
+  test('(0,,(C,))', () => {
+    const tree = '(0,,(C,))'
+    const result = printTree(tree)
+    expect(result).toEqual(['0', 'C'])
+  })
+})
+describe('Valid Syntax', () => {
+  test('(0,(R,(C),))', () => {
+    const tree = '(0,(R,(C),))'
+    const result = printTree(tree)
+    expect(result).toEqual(['C', 'R', '0'])
+  })
+})
+
+describe('Valid Syntax', () => {
+  test('(0,(R,(C),),)', () => {
+    const tree = '(0,(R,(C),),)'
+    const result = printTree(tree)
+    expect(result).toEqual(['C', 'R', '0'])
+  })
+})
+describe('Valid Syntax', () => {
+  test('(0,(R,(C),),(T))', () => {
+    const tree = '(0,(R,(C),),(T))'
+    const result = printTree(tree)
+    expect(result).toEqual(['C', 'R', '0', 'T'])
   })
 })

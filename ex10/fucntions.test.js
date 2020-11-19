@@ -230,3 +230,12 @@ describe('Error', () => {
     expect(result).toThrowError('Wrong')
   })
 })
+describe('Error', () => {
+  test('no matching parentesis', () => {
+    const tree = '(0,(R,(R,(R,(R,(R),(X))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})

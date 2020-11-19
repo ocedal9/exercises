@@ -29,7 +29,6 @@ class Tree {
   parCount(exp) {
     let sum = 0
     for (let char of exp) {
-      //   let char = exp[p]
       if (char == '(') {
         sum++
       } else if (char == ')') {
@@ -46,6 +45,7 @@ class Tree {
     let nodeData = ''
     let leftData = ''
     let rightData = ''
+    let leftDone = false
     if (expArr.length == 1) {
       let exp = expArr[0]
       if (exp.endsWith(')')) {
@@ -75,7 +75,13 @@ class Tree {
         let parSum = this.parCount(exp)
         parAcu += parSum
         leftArr.push(exp)
-        if (parAcu == 0) break
+        if (parAcu == 0) {
+          leftDone = true
+          break
+        }
+      }
+      if (!leftDone) {
+        throw new Error('Wrong Syntax')
       }
       rightArr = expArr.slice(i + 1)
       leftData = leftArr.join(',')

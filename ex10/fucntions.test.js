@@ -182,6 +182,26 @@ describe('Error', () => {
 })
 
 describe('Error', () => {
+  test('(0,((R,(C),),))', () => {
+    const tree = '(0,((R,(C),),))'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Error', () => {
+  test('(0,(R,(C),,),)', () => {
+    const tree = '(0,(R,(C),,),)'
+    function result() {
+      printTree(tree, 'postfix')
+    }
+    expect(result).toThrowError('Wrong')
+  })
+})
+
+describe('Error', () => {
   test('(R,(t),(r),)', () => {
     const tree = '(R,(t),(r),)'
     function result() {

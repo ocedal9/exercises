@@ -46,6 +46,7 @@ class Tree {
     let leftData = ''
     let rightData = ''
     let leftDone = false
+    let onlyLeft = false
     if (expArr.length == 1) {
       let exp = expArr[0]
       if (exp.endsWith(')')) {
@@ -69,11 +70,15 @@ class Tree {
       let parAcu = 0
       let leftArr = []
       let rightArr = []
-      let i = 1
-      for (i; i < expArr.length; i++) {
+      for (let i = 1; i < expArr.length; i++) {
         let exp = expArr[i]
         let parSum = this.parCount(exp)
         parAcu += parSum
+        if (i == expArr.length - 1 && parAcu == -1) {
+          exp = exp.slice(0, exp.length - 1)
+          leftDone = true
+          onlyLeft = true
+        }
         leftArr.push(exp)
         if (parAcu == 0) {
           leftDone = true
@@ -83,10 +88,12 @@ class Tree {
       if (!leftDone) {
         throw new Error('Wrong Syntax')
       }
-      rightArr = expArr.slice(i + 1)
       leftData = leftArr.join(',')
-      let rightDataMom = rightArr.join(',')
-      rightData = rightDataMom.slice(0, rightDataMom.length - 1)
+      if (!onlyLeft) {
+        rightArr = expArr.slice(i + 1)
+        let rightDataMom = rightArr.join(',')
+        rightData = rightDataMom.slice(0, rightDataMom.length - 1)
+      }
     }
     if (this.root == null) {
       wnode = new Node(nodeData)

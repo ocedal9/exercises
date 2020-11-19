@@ -10,19 +10,15 @@ class Tree {
     this.root = null
   }
   valChar(char) {
-    let regex = /[a-z0-9]/i
-    let alpha = regex.test(char)
-    return alpha
+    return /[a-z0-9]/i.test(char)
   }
   valData(exp) {
     let data = ''
     if (exp[0] != '(' || exp.length <= 1) {
       throw new Error('Wrong Syntax')
     }
-    for (let p = 1; p < exp.length; p++) {
-      let char = exp[p]
-      let valid = this.valChar(char)
-      if (valid) {
+    for (let char of exp.slice(1)) {
+      if (this.valChar(char)) {
         data = data.concat(char)
       } else {
         throw new Error('Wrong Syntax')
@@ -32,8 +28,8 @@ class Tree {
   }
   parCount(exp) {
     let sum = 0
-    for (let p = 0; p < exp.length; p++) {
-      let char = exp[p]
+    for (let char of exp) {
+      //   let char = exp[p]
       if (char == '(') {
         sum++
       } else if (char == ')') {
@@ -78,11 +74,8 @@ class Tree {
         let exp = expArr[i]
         let parSum = this.parCount(exp)
         parAcu += parSum
-        if (parAcu == 0) {
-          leftArr.push(exp)
-          break
-        }
         leftArr.push(exp)
+        if (parAcu == 0) break
       }
       rightArr = expArr.slice(i + 1)
       leftData = leftArr.join(',')

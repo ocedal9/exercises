@@ -20,7 +20,7 @@ test('proposed Dom, 3 matches', () => {
   expect(i - 1).toBe(3)
 })
 
-test('changing 3rd input attribute to unchecked, 2matches', () => {
+test('changing child attribute to unchecked, 2 matches', () => {
   document.body.innerHTML = `
   <section>
           <div id="1" class="note"><input data-testid="1" type="checkbox" class="is-complete" checked> </div>

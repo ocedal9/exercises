@@ -1,11 +1,15 @@
 function querySelectorAll(str) {
   let result = []
   const [parent, child] = str.split('<')
-  const list = document.querySelectorAll(parent)
+  if (!child) {
+    return document.querySelectorAll(parent)
+  }
+  const list = document.querySelectorAll(child)
   for (let elem of list) {
-    const hasChild = elem.querySelector(child)
-    if (hasChild) {
-      result.push(elem)
+    const parentElem = elem.parentElement
+    const match = parentElem.matches(parent)
+    if (match) {
+      result.push(parentElem)
     }
   }
   return result

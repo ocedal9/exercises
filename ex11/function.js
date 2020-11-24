@@ -1,17 +1,12 @@
 function querySelectorAll(str) {
-  let result = []
   const [parent, child] = str.split('<')
   if (!child) {
     return document.querySelectorAll(parent)
   }
-  const list = document.querySelectorAll(child)
-  for (let elem of list) {
-    const parentElem = elem.parentElement
-    const match = parentElem.matches(parent)
-    if (match) {
-      result.push(parentElem)
-    }
-  }
+  const nodeList = document.querySelectorAll(parent)
+  const list = Array.from(nodeList)
+  const result = list.filter((elem) => elem.querySelector(`:scope > ${child}`))
+
   return result
 }
 module.exports = querySelectorAll

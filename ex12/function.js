@@ -17,11 +17,7 @@ function isSym(tree) {
   }
   if (tree.root.left && tree.root.right) {
     recursion(tree.root.left, tree.root.right)
-    for (elem of isArr) {
-      if (!elem) {
-        return 'IS NOT SYMMETRIC'
-      }
-    }
+    for (elem of isArr) if (!elem) return 'IS NOT SYMMETRIC'
   }
   return 'SYMMETRIC'
 }

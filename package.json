@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "function": "nodemon ex11/function.js",
+    "function": "nodemon ex12/function.js",
     "other": "nodemon other.js"
   },
   "repository": {

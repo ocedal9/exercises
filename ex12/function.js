@@ -24,9 +24,7 @@ function isSym(tree) {
     const rightSon = traverseRight(tree.root.right)
     if (leftSon.length === rightSon.length) {
       for (let i = 0; i < leftSon.length; i++) {
-        if (leftSon[i] != rightSon[i]) {
-          return 'IS NOT SYMMETRIC'
-        }
+        if (leftSon[i] != rightSon[i]) return 'IS NOT SYMMETRIC'
       }
       return 'SYMMETRIC'
     } else {

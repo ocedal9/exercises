@@ -29,4 +29,3 @@ function getLong(input) {
   return input.slice(maxFirst, maxLast + 1)
 }
 module.exports = getLong
-

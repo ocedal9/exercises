@@ -1,5 +1,5 @@
 function isSym(tree) {
-  let isArr = []
+  let sym = true
   function recursion(left, right) {
     if (
       left.data != right.data ||
@@ -8,17 +8,15 @@ function isSym(tree) {
       (left.right && !right.left) ||
       (!left.right && right.left)
     ) {
-      isArr.push(false)
+      sym = false
     } else {
-      isArr.push(true)
       left.left && right.right && recursion(left.left, right.right)
       left.right && right.left && recursion(left.right, right.left)
     }
   }
   if (tree.root.left && tree.root.right) {
     recursion(tree.root.left, tree.root.right)
-    for (elem of isArr) if (!elem) return 'IS NOT SYMMETRIC'
   }
-  return 'SYMMETRIC'
+  return sym
 }
 module.exports = isSym

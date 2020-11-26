@@ -6,7 +6,7 @@ describe('SYMMETRIC', () => {
     const tree = new Tree()
     tree.add([1, [2, [3], [4, [5], []]], [2, [4, [], [5]], [3]]])
     const result = isSym(tree)
-    expect(result).toEqual('SYMMETRIC')
+    expect(result).toBe(true)
   })
 })
 
@@ -15,7 +15,7 @@ describe('SYMMETRIC', () => {
     const tree2 = new Tree()
     tree2.add([])
     const result = isSym(tree2)
-    expect(result).toEqual('SYMMETRIC')
+    expect(result).toBe(true)
   })
 })
 
@@ -24,7 +24,7 @@ describe('SYMMETRIC', () => {
     const tree = new Tree()
     tree.add([1])
     const result = isSym(tree)
-    expect(result).toEqual('SYMMETRIC')
+    expect(result).toBe(true)
   })
 })
 
@@ -33,7 +33,7 @@ describe('NOT SYMMETRIC', () => {
     const tree = new Tree()
     tree.add([1, [2, [3], [4, [5], []]], [2, [4, [], [5]], []]])
     const result = isSym(tree)
-    expect(result).toEqual('IS NOT SYMMETRIC')
+    expect(result).toBe(false)
   })
 })
 
@@ -42,6 +42,6 @@ describe('NOT SYMMETRIC', () => {
     const tree = new Tree()
     tree.add([1, [2, [3], [4, [5], []]], [2, [4, [], [5]], [6]]])
     const result = isSym(tree)
-    expect(result).toEqual('IS NOT SYMMETRIC')
+    expect(result).toBe(false)
   })
 })

@@ -1,37 +1,28 @@
-function traverseLeft(left) {
-  const result = new Array()
-  function recursion(node) {
-    node.left && recursion(node.left)
-    result.push(node.data)
-    node.right && recursion(node.right)
-  }
-  recursion(left)
-  return result
-}
-function traverseRight(right) {
-  const result = new Array()
-  function recursion(node) {
-    node.right && recursion(node.right)
-    result.push(node.data)
-    node.left && recursion(node.left)
-  }
-  recursion(right)
-  return result
-}
 function isSym(tree) {
-  if (tree.root.left && tree.root.right) {
-    const leftSon = traverseLeft(tree.root.left)
-    const rightSon = traverseRight(tree.root.right)
-    if (leftSon.length === rightSon.length) {
-      for (let i = 0; i < leftSon.length; i++) {
-        if (leftSon[i] != rightSon[i]) return 'IS NOT SYMMETRIC'
-      }
-      return 'SYMMETRIC'
+  let isArr = []
+  function recursion(left, right) {
+    if (
+      left.data != right.data ||
+      (left.left && !right.right) ||
+      (!left.left && right.right) ||
+      (left.right && !right.left) ||
+      (!left.right && right.left)
+    ) {
+      isArr.push(false)
     } else {
-      return 'IS NOT SYMMETRIC'
+      isArr.push(true)
+      left.left && right.right && recursion(left.left, right.right)
+      left.right && right.left && recursion(left.right, right.left)
     }
-  } else {
-    return 'SYMMETRIC'
   }
+  if (tree.root.left && tree.root.right) {
+    recursion(tree.root.left, tree.root.right)
+    for (elem of isArr) {
+      if (!elem) {
+        return 'IS NOT SYMMETRIC'
+      }
+    }
+  }
+  return 'SYMMETRIC'
 }
 module.exports = isSym

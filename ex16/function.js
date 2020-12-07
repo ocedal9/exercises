@@ -14,4 +14,3 @@ function hasLoop(ll) {
   return slow
 }
 module.exports = hasLoop
-//

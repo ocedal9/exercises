@@ -1,11 +1,11 @@
 function hasLoop(ll) {
-  let slow = ll.head.next
-  let fast = ll.head.next.next
-  while (fast.next && slow !== fast) {
+  let slow = ll.head?.next
+  let fast = ll.head?.next?.next
+  while (fast && slow !== fast) {
     slow = slow.next
-    fast = fast.next.next
+    fast = fast.next?.next
   }
-  if (!fast.next) return false
+  if (!fast) return false
   slow = ll.head
   while (slow != fast) {
     slow = slow.next
@@ -14,3 +14,4 @@ function hasLoop(ll) {
   return slow
 }
 module.exports = hasLoop
+//

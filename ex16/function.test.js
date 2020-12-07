@@ -68,3 +68,29 @@ describe('without loop', () => {
     expect(result).toBe(false)
   })
 })
+
+describe('without loop', () => {
+  test('No loop, 2 nodes', () => {
+    const ll = new LinkedList()
+    ll.insertHead(1)
+    ll.insertLast(2)
+    const result = hasLoop(ll)
+    expect(result).toBe(false)
+  })
+})
+
+describe('without loop', () => {
+  test('No loop, 1 nodes', () => {
+    const ll = new LinkedList()
+    ll.insertHead(1)
+    const result = hasLoop(ll)
+    expect(result).toBe(false)
+  })
+})
+describe('without loop', () => {
+  test('No loop, empty linked list', () => {
+    const ll = new LinkedList()
+    const result = hasLoop(ll)
+    expect(result).toBe(false)
+  })
+})

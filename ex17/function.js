@@ -1,9 +1,9 @@
 function isPal(ll) {
   let middle = ll.head
-  let full = ll.head
-  while (full) {
+  let end = ll.head
+  while (end) {
     middle = middle.next
-    full = full?.next?.next
+    end = end?.next?.next
   }
   let secondHalf = null
   while (middle) {

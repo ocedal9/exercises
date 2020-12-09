@@ -1,16 +1,23 @@
 function isPal(ll) {
-  let stack = []
-  let currNode = ll.head
-  while (currNode) {
-    stack.push(currNode.data)
-    currNode = currNode.next
+  let half = ll.head
+  let full = ll.head
+  while (full) {
+    half = half.next
+    full = full?.next?.next
   }
-  let pointer = ll.head
-  while (pointer) {
-    let elem = stack.pop()
-    if (elem !== pointer.data) return false
-    pointer = pointer.next
+  let secondHalf = null
+  while (half) {
+    let temp = half.next
+    half.next = secondHalf
+    secondHalf = half
+    half = temp
   }
-  return true
+  let firstHalf = ll.head
+  while (secondHalf) {
+    if (firstHalf.data !== secondHalf.data) return false
+    firstHalf = firstHalf.next
+    secondHalf = secondHalf?.next
+  }
+  return ll.head ? true : false
 }
 module.exports = isPal

@@ -63,3 +63,11 @@ describe('is NOT Palindrome', () => {
     expect(result).toBe(false)
   })
 })
+
+describe('is NOT Palindrome', () => {
+  test('empty', () => {
+    const ll = new LinkedList()
+    const result = isPal(ll)
+    expect(result).toBe(false)
+  })
+})

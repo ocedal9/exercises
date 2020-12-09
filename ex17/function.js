@@ -1,16 +1,16 @@
 function isPal(ll) {
-  let half = ll.head
+  let middle = ll.head
   let full = ll.head
   while (full) {
-    half = half.next
+    middle = middle.next
     full = full?.next?.next
   }
   let secondHalf = null
-  while (half) {
-    let temp = half.next
-    half.next = secondHalf
-    secondHalf = half
-    half = temp
+  while (middle) {
+    let temp = middle.next
+    middle.next = secondHalf
+    secondHalf = middle
+    middle = temp
   }
   let firstHalf = ll.head
   while (secondHalf) {

@@ -1,20 +1,16 @@
 function isPal(ll) {
   let half = ll.head
   let full = ll.head
+  let stack = []
   while (full) {
+    if (full.next) stack.push(half.data)
     half = half.next
     full = full?.next?.next
   }
-  let stack = []
-  while (half) {
-    stack.push(half.data)
-    half = half.next
-  }
-  let currNode = ll.head
   while (stack.length > 0) {
     const elem = stack.pop()
-    if (currNode.data !== elem) return false
-    currNode = currNode.next
+    if (half.data !== elem) return false
+    half = half.next
   }
   return ll.head ? true : false
 }

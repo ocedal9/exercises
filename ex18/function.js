@@ -1,11 +1,8 @@
 function set(obj, path, value) {
   const keysArr = path.split('.')
   let nod = obj
-  for (let i = 0; i < keysArr.length; i++) {
-    if (i === keysArr.length - 1) {
-      nod[keysArr[i]] = value
-      return obj
-    } else if (
+  for (var i = 0; i < keysArr.length - 1; i++) {
+    if (
       typeof nod[keysArr[i]] === 'function' ||
       (typeof nod[keysArr[i]] === 'object' && nod[keysArr[i]] !== null)
     ) {
@@ -17,5 +14,7 @@ function set(obj, path, value) {
       throw new Error('No valid property')
     }
   }
+  nod[keysArr[i]] = value
+  return obj
 }
 module.exports = set

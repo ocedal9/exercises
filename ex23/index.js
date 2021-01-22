@@ -38,7 +38,7 @@ class Bar {
         let per = Math.floor(accPer * 2)
         perArr.push(per)
         filledBarsArr.push(filledBars)
-        barsToFill = Math.floor(accPer - filledBars)
+        barsToFill = accPer - filledBars
         barsToFillArr.push(barsToFill)
         rl.write(`${per}%`)
         let dNum = 51 - filledBars

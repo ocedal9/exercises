@@ -1,7 +1,7 @@
 const bar = require('./index')
 const mockArgv = require('mock-argv')
 
-test('checking bar', async () => {
+test('checking bar construction', async () => {
   let argv2 = 2
   const processSpy = jest.spyOn(process.stdout, 'write')
   bar(argv2)

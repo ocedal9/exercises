@@ -1,71 +1,21 @@
-const readline = require('readline')
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-})
-class Bar {
-  constructor(input) {
-    this.length = input
-  }
-  start() {
-    process.stdout.write('\x1B[?25l\x1b[44m\x1b[37m[')
-    for (let k = 0; k < 50; k++) {
-      process.stdout.write('\u2591')
-    }
-    process.stdout.write(`]`)
-    const arr = []
-    let i = 2
-    let spaces = 50 / this.length
-    let accPer = 0
-    let filledBars = 0
-    let barsToFill = 0
-    let per = 0
-    while (arr.length < this.length) {
-      if (isPrime(i)) {
-        arr.push(i)
-        accPer += spaces
-        if (arr.length == this.length) {
-          per = 100
-        } else {
-          per = Math.floor(accPer * 2)
-        }
-        barsToFill = accPer - filledBars
-        process.stdout.write(`${per}%`)
-        if (barsToFill > 0) {
-          readline.moveCursor(
-            process.stdout,
-            -per.toString().length - 52 + filledBars
-          )
-          for (let y = 0; y < barsToFill; y++) {
-            if (filledBars < 50) {
-              process.stdout.write('\u2588')
-              filledBars++
-            }
-          }
-          readline.moveCursor(process.stdout, 51 - filledBars)
-        } else {
-          readline.moveCursor(process.stdout, -per.toString().length - 1)
-        }
-      }
-      i++
-    }
-    process.stdout.write(
-      `\nThe first ${this.length} prime numbers are: ${arr}\x1B[?25h\x1b[0m\n`
-    )
-    rl.close()
-  }
-}
-function isPrime(n) {
-  for (let i = 2; i <= Math.sqrt(n); i++) {
-    if (n % i === 0) {
-      return false
-    }
-  }
-  return true
-}
+const Bar = require('./progressBar')
+const prime = require('./isPrime')
 function getN(argv2) {
-  const createBar = new Bar(argv2)
-  createBar.start()
+  const bar = new Bar(50)
+  bar.start()
+  let arr = []
+  let i = 2
+  let per = 0
+  while (arr.length < argv2) {
+    if (prime(i)) {
+      arr.push(i)
+      per = (100 * arr.length) / argv2
+      bar.update(per)
+    }
+    i++
+  }
+  bar.close()
+  return arr
 }
-// getN(process.argv[2])
+// getN(100)
 module.exports = getN

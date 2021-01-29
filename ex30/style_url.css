@@ -1,9 +1,12 @@
 form {
-    position   : absolute;
-    left       : 2em;
-    top        : 8em;
-    font-size  : 22px;
-    font-family: "Helvetica";
+    display    : inline;
+    position   : relative;
+    top        : 20px;
+    font-family: "Arial";
+}
+
+label {
+    font-size: 12px;
 }
 
 .form-field {
@@ -11,20 +14,20 @@ form {
 }
 
 .form-field>input {
-    position     : relative;
-    font-size    : .7em;
+    font-size    : 12px;
     border       : none;
-    border-bottom: .1em solid black;
+    border-bottom: 1px solid black;
+    width        : 80px;
 }
 
 .form-field::after {
     position        : absolute;
-    bottom          : 3.5em;
-    left            : 15em;
-    padding         : .4em 0;
+    bottom          : 22px;
+    left            : 80px;
+    padding         : 4px 0;
     content         : attr(data-hint);
-    font-size       : .5em;
-    width           : 160px;
+    width           : 130px;
+    font-size       : 6px;
     background-color: black;
     color           : white;
     text-align      : center;
@@ -33,22 +36,21 @@ form {
 .form-field::before {
     content     : "";
     position    : absolute;
-    bottom      : 1.35em;
-    left        : 8em;
-    margin-left : -5px;
-    border-width: 5px;
+    bottom      : 9px;
+    left        : 90px;
+    border-width: 10px;
     border-style: solid;
     border-color: black transparent transparent transparent;
 }
 
 button {
     position        : absolute;
-    left            : 7em;
-    top             : 2.5em;
-    border-radius   : 1em;
+    left            : 80px;
+    top             : 30px;
+    border-radius   : 1rem;
     border-style    : none;
-    font-size       : .8em;
-    padding         : .3em .9em;
+    font-size       : 7px;
+    padding         : 1px 9px;
     background-color: rgb(233, 117, 54);
     color           : white;
 }

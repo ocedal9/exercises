@@ -1,0 +1,26 @@
+.fancy-button {
+  color          : #565c5e;
+  position       : absolute;
+  left           : 2em;
+  top            : 2em;
+  padding        : .4em .2em;
+  font-family    : "Verdana";
+  font-weight    : bold;
+  font-size      : 24px;
+  text-decoration: none;
+  text-transform : uppercase;
+  background     : linear-gradient(180deg, rgba(150, 150, 153, 0.364) 50%, rgba(153, 149, 149, 0.7) 51%);
+  border-radius  : .1em;
+  box-shadow     : 0 0 .1em .1em rgba(122, 114, 114, 0.522), 0 0 0 .4em rgba(185, 178, 177, 0.508), 0 0 0 .5em white,
+    0 0 0 .6em black;
+}
+
+.fancy-button::before {
+  content: "\2605\0020";
+  color  : #858484;
+}
+
+.fancy-button::after {
+  content: "\0020\2605";
+  color  : #858484;
+}

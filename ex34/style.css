@@ -1,0 +1,406 @@
+* {
+    box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear  : both;
+    display: table;
+}
+
+[class*="col-"] {
+    float  : left;
+    padding: 0 px;
+}
+
+.left-list {
+    list-style-type: none;
+    margin         : 0;
+    padding        : 0;
+}
+
+.left-list li {
+    margin-top: 10px
+}
+
+.left-list li a {
+    margin-left: 5%;
+    font-weight: bold;
+}
+
+.logo {
+    border-radius: 50%;
+    width        : 100%;
+}
+
+.logo-container {
+    position: relative;
+    width   : 80px
+}
+
+.logo-text {
+    position  : absolute;
+    top       : 6%;
+    text-align: center;
+    font-size : 18px
+}
+
+.sidebar {
+    font-size    : 70%;
+    padding-right: 20px;
+}
+
+.latest {
+    font-family: "Felipa";
+    font-weight: bold;
+}
+
+.sidebar h3 {
+    padding-top  : 10%;
+    border-bottom: dotted 2px black;
+    color        : black
+}
+
+.sidebar span {
+    color: #37cdc6
+}
+
+.sidebar button {
+    background-color: white;
+    color           : #37cdc6;
+    font-size       : 80%;
+    vertical-align  : center;
+    padding         : 4px 4px;
+}
+
+.sidebar button img {
+    float: left;
+    color: #37cdc6
+}
+
+.text-position {
+    position           : relative;
+    width              : 100%;
+    height             : 260px;
+    background-image   : url('./images/html-css-assets_feature-story.jpg');
+    background-size    : cover;
+    background-position: center;
+}
+
+.text-position h4 {
+    margin          : 0;
+    padding         : 1%;
+    padding-left    : 2%;
+    background-color: white;
+    width           : 25%;
+    position        : absolute;
+    bottom          : 30%;
+    font-size       : 90%;
+}
+
+.text-position p {
+    font-size       : 55%;
+    margin          : 0;
+    padding         : 1%;
+    padding-left    : 2%;
+    background-color: black;
+    width           : 40%;
+    color           : white;
+    position        : absolute;
+    bottom          : 20%
+}
+
+.alt-buttons a {
+    font-size       : 60%;
+    display         : inline-block;
+    width           : 25%;
+    margin          : 0;
+    padding         : 0;
+    border-left     : 1px solid #d7edec;
+    background-color: #dbfefc;
+}
+
+#active {
+    background-color: #d7edec
+}
+
+.alt-buttons a:first-child {
+    border-left: none;
+}
+
+.alt-buttons a h3 {
+    font-size: 150%;
+    margin   : 0;
+    padding  : 10% 0 0 10%;
+}
+
+.alt-buttons a p {
+    font-size  : 120%;
+    font-family: "Felipa", serif;
+    font-weight: bold;
+    margin     : 0;
+    padding    : 5% 0 10% 10%;
+}
+
+.altbuttons>.active {
+    background-color: black;
+}
+
+.subs {
+    border-top   : dotted 2px black;
+    border-bottom: dotted 2px black;
+    margin       : 0;
+    display      : flex;
+    align-items  : center;
+    font-size    : 10px;
+    margin       : 10px 0px 10px 0px
+}
+
+.subs>img {
+    width       : 5%;
+    margin-right: 10px;
+}
+
+.subs>p {
+    width      : 60%;
+    margin     : 0px 10px 0px 0px;
+    font-family: "Felipa";
+    font-weight: bold;
+    font-size  : 120%;
+}
+
+.subs>form {
+    width: 35%;
+}
+
+.text-input {
+    width: 50%;
+}
+
+.submit {
+    width: 40%
+}
+
+.R {
+    padding  : 1%;
+    font-size: 70%
+}
+
+.foot {
+    border-top: dotted 3px black;
+}
+
+.foot ul {
+    margin : 0;
+    padding: 0
+}
+
+.foot li {
+    display    : inline-block;
+    font-size  : 70%;
+    border-left: solid 2px rgb(221, 216, 216);
+    padding    : 0 0 0 1%
+}
+
+.foot div ul li:first-child {
+    border-left: none;
+}
+
+.foot p {
+    font-size: 70%;
+    margin   : 0;
+}
+
+.foot img {
+    float     : right;
+    width     : 20px;
+    margin-top: 12px;
+}
+
+a {
+    text-decoration: none;
+    color          : #37cdc6
+}
+
+h3 {
+    color: #37cdc6
+}
+
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+    .col-s-1 {
+        width: 25%;
+    }
+
+    .col-s-2 {
+        width: 50%;
+    }
+
+    .col-s-3 {
+        width: 75%;
+    }
+
+    .col-s-4 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .col-1 {
+        width: 20%;
+    }
+
+    .col-2 {
+        width: 40%;
+    }
+
+    .col-3 {
+        width: 60%
+    }
+
+    .col-4 {
+        width: 80%;
+    }
+
+    .col-5 {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .sidebar,
+    .foot {
+        display: none;
+    }
+
+    .head {
+        position: relative;
+        margin  : 10px 0
+    }
+
+    .logo-container {
+        display: inline-block
+    }
+
+    .left-list {
+        position: absolute;
+        top     : 30%;
+        left    : 40%;
+        width   : 60%;
+    }
+
+    .left-list li {
+        display   : inline-block;
+        width     : 18%;
+        margin-top: 0px;
+        text-align: center;
+    }
+
+    .left-list>li>a {
+        font-size: 80%;
+        display  : block;
+        width    : 100%
+    }
+
+    .alt-buttons a h3 {
+        padding       : 5% 0;
+        text-align    : center
+            /* padding: 5% 5% 5% 30%; */
+
+
+    }
+
+    .alt-buttons p {
+        display: none;
+    }
+
+    .subs p {
+        font-size: 150%;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .head {
+        position: relative;
+        margin  : 0;
+        padding : 0;
+        width   : 100%;
+        height  : 130px
+    }
+
+    .left-list {
+        width         : 100%;
+        top           : 0;
+        left          : 0%;
+        font-size     : 120%;
+        padding-bottom: 2%;
+        border-bottom : 2px dotted black;
+
+    }
+
+    .left-list img {
+        display: none;
+    }
+
+    .logo-container {
+        position: absolute;
+        left    : 40%;
+        top     : 35%
+    }
+
+    .alt-buttons a {
+        text-align: center;
+        padding   : 2% 0
+    }
+
+    .alt-buttons h3 {
+        width  : 25%;
+        display: inline;
+    }
+
+    .subs {
+        display: inline-block;
+        padding: 3% 0
+    }
+
+    .subs>img {
+        display: inline-block;
+        width  : 10%
+    }
+
+    .subs>p {
+        display: inline-block;
+        width  : 80%
+    }
+
+    .subs>form {
+        width: 100%;
+    }
+
+    .text-input {
+        width: 60%
+    }
+
+    .submit {
+        width: 35%
+    }
+
+    h3 {
+        font-size: 150%
+    }
+
+    p {
+        font-size: 150%
+    }
+
+    .R {
+        border-bottom: 2px dotted black;
+        margin-top   : 5%;
+    }
+}

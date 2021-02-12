@@ -43,10 +43,13 @@ body {
 }
 
 .logo-text {
+    /* display    : inline; */
     position   : absolute;
+    width      : 55%;
+    left       : 22%;
     top        : 6%;
     text-align : center;
-    font-size  : 120%;
+    font-size  : 100%;
     color      : white;
     font-family: "Felipa", serif;
 }
@@ -295,22 +298,27 @@ h3 {
 
     .left-list {
         position: absolute;
-        top     : 0%;
-        left    : 40%;
-        width   : 60%;
+        top     : 19%;
+        left    : 35%;
+        width   : 65%;
     }
 
     .left-list li {
         display   : inline-block;
-        width     : 18%;
+        width     : 19%;
         margin-top: 0px;
         text-align: center;
     }
 
     .left-list>li>a {
-        font-size: 80%;
+        font-size: 90%;
         display  : block;
-        width    : 100%
+        width    : 100%;
+        margin   : 0;
+    }
+
+    .left-list li img {
+        width: 30%;
     }
 
     .text-position {
